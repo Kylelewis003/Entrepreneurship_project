@@ -22,7 +22,8 @@ Prerequisites
 
 - Python 3.6 or higher
 - Flask (for web application)
-- SQLite (for database)
+- MySQL (for database)
+- XAMPP
 - Other dependencies listed in `requirements.txt`
 
 ### Installation
