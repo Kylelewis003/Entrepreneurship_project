@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Crop Recommendation
+{% endblock title %}
+
+{% block body %}
+  
+ {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <br>
+
+  <div class="container">
+    <div class="login">
+      <h1>Crop Recommendation</h1>
+      <form id="prediction-form" method="POST" action="/crop">
+        <div class="form-row">
+          <label for="temperature">Temperature</label>
+          <input type="text" id="temperature" name="temperature"  required="required" />
+        </div>
+        <div class="form-row">
+          <label for="humidity">Humidity</label>
+          <input type="text" id="humidity" name="humidity"  required="required" />
+        </div>
+        <div class="form-row">
+          <label for="ph">PH scale</label>
+          <input type="text" id="ph" name="ph"  required="required" />
+        </div>
+        <div class="form-row">
+          <label for="rainfall">Rainfall</label>
+          <input type="text" id="rainfall" name="rainfall"  required="required" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+      </form>
+      <br>
+      {% if prediction_text %}
+      <div class="predict-text" id="prediction-text">
+        <h2>{{ prediction_text }}</h2>
+      </div> 
+      {% endif %}
+    </div>
+  </div>
+{% endblock body %}

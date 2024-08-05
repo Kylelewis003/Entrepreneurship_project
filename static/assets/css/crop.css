@@ -1,0 +1,62 @@
+.login {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; 
+  }
+
+ 
+  #prediction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+  }
+
+  .form-row {
+    display: flex;
+    flex-direction: column; 
+  }
+
+  .form-row label {
+    margin-bottom: 5px; 
+    font-weight: bold;
+    text-align: left; 
+  }
+
+  .form-row input[type="text"] {
+    width: 100%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #ffffff;
+  }
+
+  .login button { 
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745; 
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+
+  .login button:hover {
+    background-color: #218838;
+  }
+
+  .predict-text {
+    margin-top: 20px;
+  }
+
+  .predict-text h2 {
+    font-size: 24px;
+    color: #333;
+  }

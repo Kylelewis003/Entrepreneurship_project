@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Weather Forecast
+{% endblock title %}
+
+{% block body %}
+
+  {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="weather-form-container">
+         <h1>Weather Forecast</h1>
+          <form method="post">
+            <label for="location">Enter location</label>
+            <input type="text" id="location" name="location" required>
+            <br><br>
+            <button type="submit" class="btn btn-success">Get Weather</button>
+          </form>
+
+          {% if weather %}
+            <div class="weather-info">
+              <h2>{{ weather.city }}</h2>
+              <p>Temperature: {{ weather.temperature }}°C</p>
+              <p>Humidity: {{ weather.humidity }}%</p>
+              <p>Rainfall (last 24 hour): {{ weather.rainfall }} mm</p>
+              <p>Description: {{ weather.description }}</p>
+              <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Weather icon">
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+{% endblock body %}

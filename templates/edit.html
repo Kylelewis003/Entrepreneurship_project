@@ -1,0 +1,124 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    
+    <!-- Custom CSS -->
+    <style>
+      body {
+        background-color: #28a745; /* Success background */
+        color: #fff; /* White text for better contrast */
+      }
+      .container {
+        margin-top: 50px;
+      }
+      .form-container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        color: #333;
+      }
+      .form-control:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+      }
+      .btn-light {
+        background-color: #fff;
+        color: #28a745;
+        border: 1px solid #28a745;
+      }
+      .btn-light:hover {
+        background-color: #28a745;
+        color: #fff;
+      }
+      .text-center span {
+        background-color: #fff;
+        color: #28a745;
+        padding: 0 10px;
+        border-radius: 5px;
+      }
+    </style>
+
+    <title>Edit Farmer Details</title>
+  </head>
+  <body>
+
+    <h3 class="text-center"><span>Edit Farmer Details</span></h3>
+
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+      {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 form-container">
+          <form action="/edit/{{posts.rid}}" method="post">
+            <div class="form-group">
+              <label for="farmername">Farmer Name</label>
+              <input type="text" class="form-control" name="farmername" id="farmername" value="{{posts.farmername}}" required>
+            </div>
+
+            <div class="form-group">
+              <label for="adharnumber">Aadhar Number</label>
+              <input type="number" class="form-control" name="adharnumber" id="adharnumber" value="{{posts.adharnumber}}" required>
+            </div>
+
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input type="number" class="form-control" name="age" id="age" value="{{posts.age}}" required>
+            </div>
+
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select class="form-control" id="gender" name="gender" required>
+                <option selected>{{posts.gender}}</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="phonenumber">Phone Number</label>
+              <input type="number" class="form-control" name="phonenumber" id="phonenumber" value="{{posts.phonenumber}}" required>
+            </div>
+
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" class="form-control" name="address" id="address" value="{{posts.address}}" required>
+            </div>
+
+            <div class="form-group">
+              <label for="farmingtype">Farming Type</label>
+              <select class="form-control" id="farmingtype" name="farmingtype" required>
+                <option selected>{{posts.farming}}</option>
+                {% for d in farming %}
+                <option value="{{d.farmingtype}}">{{d.farmingtype}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-light btn-block">Submit Record</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  </body>
+</html>
